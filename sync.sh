@@ -104,7 +104,7 @@ do_push() {
 do_pull() {
 
 	clear
-	downlaod
+	download
 	extract
 	update
 	clear
