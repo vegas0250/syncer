@@ -3,7 +3,7 @@ set -e
 
 # === Настройки ===
 ARCHIVE_NAME="ubuntu-env.tar.gz"
-STORAGE_PATH="yc:linux-env:/" # пример пути для rclone
+STORAGE_PATH="yc:linux-env/" # пример пути для rclone
 REMOTE_OBJECT="$STORAGE_PATH$ARCHIVE_NAME"
 
 # === Функции ===
