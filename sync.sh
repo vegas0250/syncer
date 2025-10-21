@@ -58,6 +58,7 @@ create() {
 		--exclude=/home/*/.mozilla/cache \
 		--exclude=/home/*/.config/google-chrome/Cache \
 		--exclude=/root/.cache \
+		--exclude=/root/.vscode-server \
 		--exclude=/root/.local/share/Trash \
 		--exclude=/root/.mozilla/cache \
 		--exclude=/root/.config/google-chrome/Cache \
@@ -112,6 +113,22 @@ do_pull() {
 
 update() {
 	echo "[INFO] Выполняю дополнительные команды..."
+
+	apt autoremove --purge -y
+
+	apt autoclean -y
+
+	apt clean -y
+
+	journalctl --vacuum-time=1s
+
+	rm -rf /tmp/* /var/tmp/*
+
+	rm -rf ~/.cache
+
+	rm -rf /var/crash/*
+
+	rm -rf /var/lib/systemd/coredump/*
 
 	apt update && apt upgrade -y && apt install -f
 
