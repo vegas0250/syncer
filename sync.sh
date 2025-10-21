@@ -52,6 +52,7 @@ create() {
 		--exclude=/var/cache \
 		--exclude=/var/log \
 		--exclude=/var/backups \
+		--exclude=/var/lib/docker \
 		--exclude=/home/*/.cache \
 		--exclude=/home/*/.local/share/Trash \
 		--exclude=/home/*/.mozilla/cache \
