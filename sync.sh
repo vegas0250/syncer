@@ -27,11 +27,12 @@ create() {
 
 	tar -czpvf "$ARCHIVE_NAME" \
 		/root/.ssh \
-		/root/.tmux \
+		/root/.tmux.conf \
 		/root/.zshrc \
 		/root/.bashrc \
 		/root/.local \
 		/root/.config \
+		/root/.oh-my-zsh \
 		/root/source-projects \
 		--warning=no-all
 		
@@ -42,9 +43,7 @@ create() {
 extract() {
 	echo "[INFO] Распаковываю архив в корень..."
 
-	tar -xzpPf "$ARCHIVE_NAME" \
-		--exclude={"/dev","/proc","/sys","/run","/tmp","/mnt","/media","/lost+found","/boot","/etc/fstab","/etc/hostname","/etc/hosts"} \
-		-C /
+	tar -xzpvf "$ARCHIVE_NAME" -P
 }
 
 upload() {
@@ -57,8 +56,8 @@ upload() {
 }
 
 download() {
-	echo "[INFO] Скачиваю архив..."
-
+	echo "[INFO] Скачиваю архив $REMOTE_OBJECT в архив $ARCHIVE_NAME"
+ 
 	rclone copy -P "$REMOTE_OBJECT" "$ARCHIVE_NAME"
 
 	echo "[OK] Архив успешно скачен $ARCHIVE_NAME"
@@ -82,24 +81,6 @@ do_pull() {
 
 update() {
 	echo "[INFO] Выполняю дополнительные команды..."
-
-	apt autoremove --purge -y
-
-	apt autoclean -y
-
-	apt clean -y
-
-	journalctl --vacuum-time=1s
-
-	rm -rf /tmp/* /var/tmp/*
-
-	rm -rf ~/.cache
-
-	rm -rf /var/crash/*
-
-	rm -rf /var/lib/systemd/coredump/*
-
-	apt update && apt upgrade -y && apt install -f
 
 	echo "[OK] Система обновлена из архива."
 }
