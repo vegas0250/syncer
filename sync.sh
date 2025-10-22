@@ -26,46 +26,15 @@ create() {
 	echo "[INFO] Создаю архив системы..."
 
 	tar -czpvf "$ARCHIVE_NAME" \
-		--exclude=/dev \
-		--exclude=/proc \
-		--exclude=/sys \
-		--exclude=/run \
-		--exclude=/tmp \
-		--exclude=/var/tmp \
-		--exclude=/mnt \
-		--exclude=/media \
-		--exclude=/lost+found \
-		--exclude=/swapfile \
-		--exclude=/boot \
-		--exclude=/lib/modules \
-		--exclude=/usr/lib/modules \
-		--exclude=/usr/lib/wsl \
-		--exclude=/usr/src \
-		--exclude=/etc/fstab \
-		--exclude=/etc/crypttab \
-		--exclude=/etc/netplan \
-		--exclude=/etc/network/interfaces \
-		--exclude=/etc/NetworkManager \
-		--exclude=/etc/resolv.conf \
-		--exclude=/etc/hostname \
-		--exclude=/etc/hosts \
-		--exclude=/var/cache \
-		--exclude=/var/log \
-		--exclude=/var/backups \
-		--exclude=/var/lib/docker \
-		--exclude=/home/*/.cache \
-		--exclude=/home/*/.local/share/Trash \
-		--exclude=/home/*/.mozilla/cache \
-		--exclude=/home/*/.config/google-chrome/Cache \
-		--exclude=/root/.cache \
-		--exclude=/root/.vscode-server \
-		--exclude=/root/.local/share/Trash \
-		--exclude=/root/.mozilla/cache \
-		--exclude=/root/.config/google-chrome/Cache \
-		--exclude=/root/projects \
-		--exclude="$ARCHIVE_NAME" \
-		--warning=no-all \
-		/
+		/root/.ssh \
+		/root/.tmux \
+		/root/.zshrc \
+		/root/.bashrc \
+		/root/.local \
+		/root/.config \
+		/root/source-projects \
+		--warning=no-all
+		
 
 	echo "[OK] Архив успешно создан"
 }
