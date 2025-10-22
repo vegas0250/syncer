@@ -67,6 +67,7 @@ do_push() {
 	clear
 	create
 	upload
+	clear
 }
 
 do_pull() {
