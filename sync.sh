@@ -30,7 +30,7 @@ create() {
 		/root/.tmux.conf \
 		/root/.zshrc \
 		/root/.bashrc \
-		/root/.local \
+		/root/.local/bin \
 		/root/.config \
 		/root/.oh-my-zsh \
 		/root/source-projects \
